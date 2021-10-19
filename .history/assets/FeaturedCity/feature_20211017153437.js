@@ -1,0 +1,48 @@
+import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+  FlatList,
+  View,
+} from "react-native";
+import Header from "./assets/Shared/header";
+import { AntDesign } from "@expo/vector-icons";
+
+export default function Feature() {
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [featureCity, setfeatureCity] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  const getMovies = async () => {
+    try {
+      const response = await fetch("https://first1.us/api/all_communities.php");
+      const json = await response.json();
+      console.log(json.data);
+      setfeatureCity(json.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  return (
+    <div>
+      <FlatList
+        data={featureCity}
+        keyExtractor={({ id }, index) => id}
+        renderItem={({ item }) => (
+          <Text>
+            {item.community_id}, {item.name}
+          </Text>
+        )}
+      />
+    </div>
+  );
+}
