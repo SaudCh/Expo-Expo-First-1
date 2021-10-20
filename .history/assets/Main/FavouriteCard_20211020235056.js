@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Entypo, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { Button } from "native-base";
 
-export default function FeatureCard(props) {
+export default function FavouriteCard(props) {
   const { item } = props;
   return (
     <View style={{ ...styles.container }}>
@@ -63,15 +63,12 @@ export default function FeatureCard(props) {
           <Entypo name="map" size={24} color="black" /> {item.TotalArea} sqft
         </Text>
       </View>
-      <Text style={{ marginVertical: 10 }}>
-        {JSON.parse(item.other_fields_json).ListOfficeName}
-      </Text>
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    minWidth: 350,
+    width: 300,
     marginVertical: 10,
     padding: 10,
     borderRadius: 20,

@@ -15,18 +15,20 @@ import { AntDesign } from "@expo/vector-icons";
 import SelectedFeatureCity from "./SelectedFeatureCity";
 import Header from "../Shared/header";
 import Footer from "../Shared/Footer";
-import FeatureCard from "./FeatureCard";
+import FavouriteCard from "./FavouriteCard";
 
 export default function FeatureListings(props) {
-  const [featureCity, setfeatureCity] = useState(null);
+  const [favCity, setFavCity] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   const getMovies = async () => {
     try {
-      const response = await fetch("https://first1.us/api/properties.php");
+      const response = await fetch(
+        "https://first1.us/api/favourite.php?data=12"
+      );
       const json = await response.json();
       //console.log(json.data[0].other_fields_json.ActiveOpenHouseCount);
-      setfeatureCity(json.data);
+      setFavCity(json.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -64,9 +66,9 @@ export default function FeatureListings(props) {
               </View>
             ) : (
               <FlatList
-                data={featureCity}
+                data={favCity}
                 keyExtractor={({ property_id }, index) => property_id}
-                renderItem={({ item }) => <FeatureCard item={item} />}
+                renderItem={({ item }) => <FavouriteCard item={item} />}
               />
             )}
           </View>
@@ -95,13 +97,5 @@ const styles = StyleSheet.create({
   featureCityText: {
     fontSize: 25,
     fontWeight: "bold",
-  },
-  FCbutton: {
-    margin: 5,
-  },
-  activityContainer: {
-    height: 400,
-    alignContent: "center",
-    justifyContent: "center",
   },
 });

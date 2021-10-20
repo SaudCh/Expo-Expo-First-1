@@ -8,32 +8,26 @@ import {
   CheckIcon,
   Checkbox,
   ScrollView,
-  Button,
 } from "native-base";
 import Header from "../Shared/header";
 import Footer from "../Shared/Footer";
 import { marginBottom } from "styled-system";
 
 export default function AdvanceSearch() {
-  let [propertyType, setPropertyType] = useState();
-  let [justListing, setJustListing] = useState();
+  const [propertyType, setPropertyType] = useState();
+  const [justListing, setJustListing] = useState();
   return (
     <NativeBaseProvider>
       <ScrollView>
         <Header />
         <View style={{ ...styles.container }}>
           <Text style={{ ...styles.Heading }}>Advance MLS Search</Text>
-          {/****************Quick Search*****************/}
-          <View>
-            <Text style={{ ...styles.text, marginBottom: 10 }}>
-              Quick Search
-            </Text>
-            <Input
-              isFullWidth="false"
-              style={styles.SearchBar}
-              placeholder="Enter a community, Addreess or Zip Code..."
-            />
-          </View>
+          <Text style={{ ...styles.text, marginBottom: 10 }}>Quick Search</Text>
+          <Input
+            isFullWidth="false"
+            style={styles.SearchBar}
+            placeholder="Enter a community, Addreess or Zip Code..."
+          />
           <Text
             style={{
               marginTop: 15,
@@ -249,6 +243,7 @@ export default function AdvanceSearch() {
                 style={{ backgroundColor: "white" }}
                 onValueChange={(itemValue) => setPropertyType(itemValue)}
               >
+                <Select.Item label="1 Bath" value="1" />
                 <Select.Item label="1 Bath" value="1+" />
                 <Select.Item label="2+ Bath" value="2+" />
                 <Select.Item label="3+ Bath" value="3+" />
@@ -261,183 +256,33 @@ export default function AdvanceSearch() {
                 <Select.Item label="10+ Bath" value="10+" />
               </Select>
             </View>
-            {/****************Year Build*****************/}
-            <View style={{ marginBottom: 15 }}>
-              <Text style={{ ...styles.text }}>Year Build</Text>
-              <Select
-                selectedValue={propertyType}
-                value={propertyType}
-                minWidth="200"
-                accessibilityLabel="Any year"
-                placeholder="Any year"
-                _selectedItem={{
-                  bg: "teal.600",
-                  endIcon: <CheckIcon size="5" />,
-                }}
-                mt={2}
-                w={{
-                  base: "90%",
-                  md: "25%",
-                }}
-                style={{ backgroundColor: "white" }}
-                onValueChange={(itemValue) => setPropertyType(itemValue)}
-              >
-                <Select.Item label="1990 +" value="1990 +" />
-                <Select.Item label="2000 +" value="2000 +" />
-                <Select.Item label="2005 +" value="2005 +" />
-                <Select.Item label="2010 +" value="2010 +" />
-                <Select.Item label="2015 +" value="2015 +" />
-                <Select.Item label="2016 +" value="2016 +" />
-                <Select.Item label="2017 +" value="2017 +" />
-                <Select.Item label="2018 +" value="2018 +" />
-                <Select.Item label="2019 +" value="2019 +" />
-                <Select.Item label="2020 +" value="2020 +" />
-                <Select.Item label="2021 +" value="2021 +" />
-              </Select>
-            </View>
-            {/****************Garage Spaces*****************/}
-            <View style={{ marginBottom: 15 }}>
-              <Text style={{ ...styles.text }}>Garage Spaces</Text>
-              <Select
-                selectedValue={propertyType}
-                value={propertyType}
-                minWidth="200"
-                accessibilityLabel="Any # of Garage"
-                placeholder="Any # of Garage"
-                _selectedItem={{
-                  bg: "teal.600",
-                  endIcon: <CheckIcon size="5" />,
-                }}
-                mt={2}
-                w={{
-                  base: "90%",
-                  md: "25%",
-                }}
-                style={{ backgroundColor: "white" }}
-                onValueChange={(itemValue) => setPropertyType(itemValue)}
-              >
-                <Select.Item label="1" value="1" />
-                <Select.Item label="1" value="1+" />
-                <Select.Item label="2+" value="2+" />
-                <Select.Item label="3+" value="3+" />
-                <Select.Item label="4+" value="4+" />
-                <Select.Item label="5+" value="5+" />
-                <Select.Item label="6+" value="6+" />
-                <Select.Item label="7+" value="7+" />
-                <Select.Item label="8+" value="8+" />
-                <Select.Item label="9+" value="9+" />
-                <Select.Item label="10+" value="10+" />
-              </Select>
-            </View>
-            {/****************Check Box 2*****************/}
-            <View>
-              <Checkbox.Group
-                colorScheme="green"
-                defaultValue={justListing}
-                accessibilityLabel="pick an item"
-                onChange={(values) => {
-                  setJustListing(values || []);
-                }}
-              >
-                <Checkbox value="Pool" my="2">
-                  Pool
-                </Checkbox>
-                <Checkbox value="Spa" my="2">
-                  Spa
-                </Checkbox>
-                <Checkbox value="Guest House" my="2">
-                  Guest House
-                </Checkbox>
-                <Checkbox value="Gatted Community" my="2">
-                  Gatted Community
-                </Checkbox>
-                <Checkbox value="Waterfront" my="2">
-                  Waterfront
-                </Checkbox>
-                <Checkbox value="Gulf Access" my="2">
-                  Gulf Access
-                </Checkbox>
-              </Checkbox.Group>
-            </View>
-            {/****************Minimum area square*****************/}
-            <View style={{ marginTop: 15 }}>
-              <Text style={{ ...styles.text, marginBottom: 10 }}>
-                Min Living Area Sq.Ft
-              </Text>
-              <Input
-                isFullWidth="false"
-                style={{ ...styles.SearchBar, marginBottom: 15 }}
-                placeholder="Minimum Living Area Sq.Ft"
-              />
-            </View>
-            {/****************Max Living Area Sq.Ft*****************/}
-            <View>
-              <Text style={{ ...styles.text, marginBottom: 10 }}>
-                Max Living Area Sq.Ft
-              </Text>
-              <Input
-                isFullWidth="false"
-                style={{ ...styles.SearchBar, marginBottom: 15 }}
-                placeholder="Maximum Living Area Sq.Ft"
-              />
-            </View>
-            <Text
-              style={{
-                ...styles.text,
-                color: "#09AFFF",
-                borderBottomColor: "#09afff",
-                borderBottomWidth: 3,
-                borderStyle: "dotted",
-                width: "90%",
+            <Checkbox.Group
+              colorScheme="green"
+              defaultValue={justListing}
+              accessibilityLabel="pick an item"
+              onChange={(values) => {
+                setJustListing(values || []);
               }}
             >
-              Select Communities:
-            </Text>
-            <Text
-              style={{
-                marginTop: 15,
-                ...styles.text,
-                color: "#09AFFF",
-                borderBottomColor: "#09afff",
-                borderBottomWidth: 3,
-                borderStyle: "dotted",
-                width: "90%",
-              }}
-            >
-              MLS Search:
-            </Text>
-            {/****************MLS Search*****************/}
-            <View style={{ marginVertical: 15 }}>
-              <Text style={{ ...styles.text, marginBottom: 10 }}>
-                MLS Number
-              </Text>
-              <Input
-                isFullWidth="false"
-                style={styles.SearchBar}
-                placeholder="Enter MLS Number"
-              />
-            </View>
-            {/************** Buttons ***********/}
-            <View style={{ marginBottom: 30 }}>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Search
-              </Button>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Save this Search
-              </Button>
-            </View>
+              <Checkbox value="Pool" my="2">
+                Pool
+              </Checkbox>
+              <Checkbox value="Spa" my="2">
+                Spa
+              </Checkbox>
+              <Checkbox value="Guest House" my="2">
+                Guest House
+              </Checkbox>
+              <Checkbox value="Gatted Community" my="2">
+                Gatted Community
+              </Checkbox>
+              <Checkbox value="Waterfront" my="2">
+                Waterfront
+              </Checkbox>
+              <Checkbox value="Gulf Access" my="2">
+                Gulf Access
+              </Checkbox>
+            </Checkbox.Group>
           </View>
         </View>
         <Footer />

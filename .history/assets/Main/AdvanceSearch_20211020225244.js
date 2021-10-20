@@ -418,26 +418,24 @@ export default function AdvanceSearch() {
               />
             </View>
             {/************** Buttons ***********/}
-            <View style={{ marginBottom: 30 }}>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Search
-              </Button>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Save this Search
-              </Button>
-            </View>
+            <Button
+              style={{
+                width: "90%",
+                marginTop: 10,
+                backgroundColor: "#09AFFF",
+              }}
+            >
+              Search
+            </Button>
+            <Button
+              style={{
+                width: "90%",
+                marginTop: 10,
+                backgroundColor: "#09AFFF",
+              }}
+            >
+              Save this Search
+            </Button>
           </View>
         </View>
         <Footer />

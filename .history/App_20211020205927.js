@@ -14,32 +14,32 @@ import { FontAwesome5, FontAwesome, AntDesign } from "@expo/vector-icons";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const BottomTabHomeButton = ({ children, onPress }) => (
-  <TouchableOpacity
-    onPress={onPress}
-    style={{
-      justifyContent: "center",
-      alignItems: "center",
-      top: -30,
-    }}
-  >
-    <View
-      style={{
-        width: 70,
-        height: 70,
-        borderRadius: 35,
-        backgroundColor: "#e32f45",
-      }}
-    >
-      {children}
-    </View>
-  </TouchableOpacity>
-);
+// const BottomTabHomeButton = ({ children, onPress }) => (
+//   <TouchableOpacity
+//     onPress={onPress}
+//     style={{
+//       justifyContent: "center",
+//       alignItems: "center",
+//       top: -30,
+//     }}
+//   >
+//     <View
+//       style={{
+//         width: 70,
+//         height: 70,
+//         borderRadius: 35,
+//         backgroundColor: "#e32f45",
+//       }}
+//     >
+//       {children}
+//     </View>
+//   </TouchableOpacity>
+// );
 
 function MainBottomTabs() {
   return (
     <Tab.Navigator
-      initialRouteName={"Home"}
+      //initialRouteName={"Home"}
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -126,12 +126,12 @@ function MainBottomTabs() {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Home"
         component={Main}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => [
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <FontAwesome
                 name="home"
@@ -139,11 +139,11 @@ function MainBottomTabs() {
                 color="black"
                 style={{ color: "white" }}
               />
-            </View>
-          ),
+            </View>,
+          ],
           tabBarButton: (props) => <BottomTabHomeButton {...props} />,
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Advance Search"
         component={AdvanceSearch}

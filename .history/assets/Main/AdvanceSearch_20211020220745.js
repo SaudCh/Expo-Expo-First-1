@@ -8,15 +8,14 @@ import {
   CheckIcon,
   Checkbox,
   ScrollView,
-  Button,
 } from "native-base";
 import Header from "../Shared/header";
 import Footer from "../Shared/Footer";
 import { marginBottom } from "styled-system";
 
 export default function AdvanceSearch() {
-  let [propertyType, setPropertyType] = useState();
-  let [justListing, setJustListing] = useState();
+  const [propertyType, setPropertyType] = useState();
+  const [justListing, setJustListing] = useState();
   return (
     <NativeBaseProvider>
       <ScrollView>
@@ -249,6 +248,7 @@ export default function AdvanceSearch() {
                 style={{ backgroundColor: "white" }}
                 onValueChange={(itemValue) => setPropertyType(itemValue)}
               >
+                <Select.Item label="1 Bath" value="1" />
                 <Select.Item label="1 Bath" value="1+" />
                 <Select.Item label="2+ Bath" value="2+" />
                 <Select.Item label="3+ Bath" value="3+" />
@@ -282,20 +282,20 @@ export default function AdvanceSearch() {
                 style={{ backgroundColor: "white" }}
                 onValueChange={(itemValue) => setPropertyType(itemValue)}
               >
-                <Select.Item label="1990 +" value="1990 +" />
-                <Select.Item label="2000 +" value="2000 +" />
-                <Select.Item label="2005 +" value="2005 +" />
-                <Select.Item label="2010 +" value="2010 +" />
-                <Select.Item label="2015 +" value="2015 +" />
-                <Select.Item label="2016 +" value="2016 +" />
-                <Select.Item label="2017 +" value="2017 +" />
-                <Select.Item label="2018 +" value="2018 +" />
-                <Select.Item label="2019 +" value="2019 +" />
-                <Select.Item label="2020 +" value="2020 +" />
-                <Select.Item label="2021 +" value="2021 +" />
+                <Select.Item label="1990" value="1990 +" />
+                <Select.Item label="2000" value="2000 +" />
+                <Select.Item label="2005" value="2005 +" />
+                <Select.Item label="2010" value="2010 +" />
+                <Select.Item label="2015" value="2015 +" />
+                <Select.Item label="2016" value="2016 +" />
+                <Select.Item label="2017" value="2017 +" />
+                <Select.Item label="2018" value="2018 +" />
+                <Select.Item label="2019" value="2019 +" />
+                <Select.Item label="2020" value="2020 +" />
+                <Select.Item label="2021" value="2021 +" />
               </Select>
             </View>
-            {/****************Garage Spaces*****************/}
+            {/****************No of Baths*****************/}
             <View style={{ marginBottom: 15 }}>
               <Text style={{ ...styles.text }}>Garage Spaces</Text>
               <Select
@@ -380,63 +380,6 @@ export default function AdvanceSearch() {
                 style={{ ...styles.SearchBar, marginBottom: 15 }}
                 placeholder="Maximum Living Area Sq.Ft"
               />
-            </View>
-            <Text
-              style={{
-                ...styles.text,
-                color: "#09AFFF",
-                borderBottomColor: "#09afff",
-                borderBottomWidth: 3,
-                borderStyle: "dotted",
-                width: "90%",
-              }}
-            >
-              Select Communities:
-            </Text>
-            <Text
-              style={{
-                marginTop: 15,
-                ...styles.text,
-                color: "#09AFFF",
-                borderBottomColor: "#09afff",
-                borderBottomWidth: 3,
-                borderStyle: "dotted",
-                width: "90%",
-              }}
-            >
-              MLS Search:
-            </Text>
-            {/****************MLS Search*****************/}
-            <View style={{ marginVertical: 15 }}>
-              <Text style={{ ...styles.text, marginBottom: 10 }}>
-                MLS Number
-              </Text>
-              <Input
-                isFullWidth="false"
-                style={styles.SearchBar}
-                placeholder="Enter MLS Number"
-              />
-            </View>
-            {/************** Buttons ***********/}
-            <View style={{ marginBottom: 30 }}>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Search
-              </Button>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Save this Search
-              </Button>
             </View>
           </View>
         </View>

@@ -15,8 +15,8 @@ import Footer from "../Shared/Footer";
 import { marginBottom } from "styled-system";
 
 export default function AdvanceSearch() {
-  let [propertyType, setPropertyType] = useState();
-  let [justListing, setJustListing] = useState();
+  const [propertyType, setPropertyType] = useState();
+  const [justListing, setJustListing] = useState();
   return (
     <NativeBaseProvider>
       <ScrollView>
@@ -383,6 +383,7 @@ export default function AdvanceSearch() {
             </View>
             <Text
               style={{
+                marginTop: 15,
                 ...styles.text,
                 color: "#09AFFF",
                 borderBottomColor: "#09afff",
@@ -418,26 +419,24 @@ export default function AdvanceSearch() {
               />
             </View>
             {/************** Buttons ***********/}
-            <View style={{ marginBottom: 30 }}>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Search
-              </Button>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Save this Search
-              </Button>
-            </View>
+            <Button
+              style={{
+                width: "90%",
+                marginTop: 10,
+                backgroundColor: "#09AFFF",
+              }}
+            >
+              Search
+            </Button>
+            <Button
+              style={{
+                width: "90%",
+                marginTop: 10,
+                backgroundColor: "#09AFFF",
+              }}
+            >
+              Save this Search
+            </Button>
           </View>
         </View>
         <Footer />

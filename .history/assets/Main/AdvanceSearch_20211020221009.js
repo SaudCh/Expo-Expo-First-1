@@ -8,15 +8,14 @@ import {
   CheckIcon,
   Checkbox,
   ScrollView,
-  Button,
 } from "native-base";
 import Header from "../Shared/header";
 import Footer from "../Shared/Footer";
 import { marginBottom } from "styled-system";
 
 export default function AdvanceSearch() {
-  let [propertyType, setPropertyType] = useState();
-  let [justListing, setJustListing] = useState();
+  const [propertyType, setPropertyType] = useState();
+  const [justListing, setJustListing] = useState();
   return (
     <NativeBaseProvider>
       <ScrollView>
@@ -380,63 +379,6 @@ export default function AdvanceSearch() {
                 style={{ ...styles.SearchBar, marginBottom: 15 }}
                 placeholder="Maximum Living Area Sq.Ft"
               />
-            </View>
-            <Text
-              style={{
-                ...styles.text,
-                color: "#09AFFF",
-                borderBottomColor: "#09afff",
-                borderBottomWidth: 3,
-                borderStyle: "dotted",
-                width: "90%",
-              }}
-            >
-              Select Communities:
-            </Text>
-            <Text
-              style={{
-                marginTop: 15,
-                ...styles.text,
-                color: "#09AFFF",
-                borderBottomColor: "#09afff",
-                borderBottomWidth: 3,
-                borderStyle: "dotted",
-                width: "90%",
-              }}
-            >
-              MLS Search:
-            </Text>
-            {/****************MLS Search*****************/}
-            <View style={{ marginVertical: 15 }}>
-              <Text style={{ ...styles.text, marginBottom: 10 }}>
-                MLS Number
-              </Text>
-              <Input
-                isFullWidth="false"
-                style={styles.SearchBar}
-                placeholder="Enter MLS Number"
-              />
-            </View>
-            {/************** Buttons ***********/}
-            <View style={{ marginBottom: 30 }}>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Search
-              </Button>
-              <Button
-                style={{
-                  width: "90%",
-                  marginTop: 10,
-                  backgroundColor: "#09AFFF",
-                }}
-              >
-                Save this Search
-              </Button>
             </View>
           </View>
         </View>

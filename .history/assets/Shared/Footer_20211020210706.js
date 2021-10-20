@@ -1,10 +1,30 @@
 import { Button, Input } from "native-base";
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, Image } from "react-native";
-import { getCities } from "../Data/cities";
 
 export default function Footer() {
-  const [featureCity, setfeatureCity] = useState(getCities());
+  const [featureCity, setfeatureCity] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  const getMovies = async () => {
+    try {
+      const response = await fetch(
+        "https://first1.us/api/cities.php?data=name"
+      );
+      const json = await response.json();
+      //console.log(json.data);
+      setfeatureCity(json.data);
+      //console.log(city);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
   return (
     <View
       style={{

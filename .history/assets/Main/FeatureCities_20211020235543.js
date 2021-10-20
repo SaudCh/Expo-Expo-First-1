@@ -15,18 +15,22 @@ import { AntDesign } from "@expo/vector-icons";
 import SelectedFeatureCity from "./SelectedFeatureCity";
 import Header from "../Shared/header";
 import Footer from "../Shared/Footer";
-import FeatureCard from "./FeatureCard";
 
-export default function FeatureListings(props) {
+export default function FeatureCities(props) {
   const [featureCity, setfeatureCity] = useState(null);
+  const [city, setCity] = useState();
   const [isLoading, setLoading] = useState(true);
 
   const getMovies = async () => {
     try {
-      const response = await fetch("https://first1.us/api/properties.php");
+      const response = await fetch(
+        "https://first1.us/api/cities.php?data=name"
+      );
       const json = await response.json();
-      //console.log(json.data[0].other_fields_json.ActiveOpenHouseCount);
+      //console.log(json.data);
       setfeatureCity(json.data);
+      setCity(json.data[0].city_id);
+      //console.log(city);
     } catch (error) {
       console.error(error);
     } finally {
@@ -37,6 +41,11 @@ export default function FeatureListings(props) {
   useEffect(() => {
     getMovies();
   }, []);
+
+  const changeCityHandler = (item) => {
+    setCity(item.city_id);
+  };
+
   return (
     <NativeBaseProvider>
       <Header />
@@ -50,7 +59,7 @@ export default function FeatureListings(props) {
               size={24}
               color="black"
             />
-            <Text style={styles.featureCityText}>Feature Listings</Text>
+            <Text style={styles.featureCityText}>Feature City</Text>
           </View>
           <View
             style={{
@@ -58,27 +67,21 @@ export default function FeatureListings(props) {
               alignItems: "center",
             }}
           >
-            {isLoading ? (
-              <View style={{ ...styles.activityContainer }}>
-                <ActivityIndicator size="large" color="red" />
-              </View>
-            ) : (
-              <FlatList
-                data={featureCity}
-                keyExtractor={({ property_id }, index) => property_id}
-                renderItem={({ item }) => <FeatureCard item={item} />}
-              />
-            )}
+            <FlatList
+              numColumns="3"
+              data={featureCity}
+              keyExtractor={({ city_id }, index) => city_id}
+              renderItem={({ item }) => (
+                <Button
+                  onPress={() => changeCityHandler(item)}
+                  style={styles.FCbutton}
+                >
+                  {item.name}
+                </Button>
+              )}
+            />
           </View>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              marginTop: 32,
-            }}
-          >
-            <Button style={{ width: "90%" }}>Show More Properties</Button>
-          </View>
+          <SelectedFeatureCity city={city} />
           <Footer />
         </View>
       </ScrollView>
@@ -98,10 +101,5 @@ const styles = StyleSheet.create({
   },
   FCbutton: {
     margin: 5,
-  },
-  activityContainer: {
-    height: 400,
-    alignContent: "center",
-    justifyContent: "center",
   },
 });

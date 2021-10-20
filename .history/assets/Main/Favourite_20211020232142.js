@@ -23,7 +23,9 @@ export default function FeatureListings(props) {
 
   const getMovies = async () => {
     try {
-      const response = await fetch("https://first1.us/api/properties.php");
+      const response = await fetch(
+        "https://first1.us/api/favourite.php?data=12"
+      );
       const json = await response.json();
       //console.log(json.data[0].other_fields_json.ActiveOpenHouseCount);
       setfeatureCity(json.data);
@@ -95,13 +97,5 @@ const styles = StyleSheet.create({
   featureCityText: {
     fontSize: 25,
     fontWeight: "bold",
-  },
-  FCbutton: {
-    margin: 5,
-  },
-  activityContainer: {
-    height: 400,
-    alignContent: "center",
-    justifyContent: "center",
   },
 });

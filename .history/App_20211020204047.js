@@ -61,7 +61,7 @@ function MainBottomTabs() {
         component={FeatureCities}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, key = 1 }) => [
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <AntDesign
                 name="staro"
@@ -87,8 +87,8 @@ function MainBottomTabs() {
                   Cities
                 </Text>
               </View>
-            </View>
-          ),
+            </View>,
+          ],
         }}
       />
       <Tab.Screen
@@ -96,7 +96,7 @@ function MainBottomTabs() {
         component={FeatureListings}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => [
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <FontAwesome5
                 name="city"
@@ -122,8 +122,8 @@ function MainBottomTabs() {
                   Listings
                 </Text>
               </View>
-            </View>
-          ),
+            </View>,
+          ],
         }}
       />
       <Tab.Screen
@@ -131,7 +131,7 @@ function MainBottomTabs() {
         component={Main}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => [
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <FontAwesome
                 name="home"
@@ -139,8 +139,8 @@ function MainBottomTabs() {
                 color="black"
                 style={{ color: "white" }}
               />
-            </View>
-          ),
+            </View>,
+          ],
           tabBarButton: (props) => <BottomTabHomeButton {...props} />,
         }}
       />
@@ -149,7 +149,7 @@ function MainBottomTabs() {
         component={AdvanceSearch}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => [
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <AntDesign
                 name="search1"
@@ -176,8 +176,8 @@ function MainBottomTabs() {
                   Search
                 </Text>
               </View>
-            </View>
-          ),
+            </View>,
+          ],
         }}
       />
       <Tab.Screen
@@ -185,7 +185,7 @@ function MainBottomTabs() {
         component={Favourite}
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused }) => [
             <View style={{ alignItems: "center", justifyContent: "center" }}>
               <AntDesign
                 name="hearto"
@@ -203,8 +203,8 @@ function MainBottomTabs() {
                   Favourites
                 </Text>
               </View>
-            </View>
-          ),
+            </View>,
+          ],
         }}
       />
     </Tab.Navigator>

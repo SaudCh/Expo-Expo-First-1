@@ -63,15 +63,11 @@ export default function FeatureCard(props) {
           <Entypo name="map" size={24} color="black" /> {item.TotalArea} sqft
         </Text>
       </View>
-      <Text style={{ marginVertical: 10 }}>
-        {JSON.parse(item.other_fields_json).ListOfficeName}
-      </Text>
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    minWidth: 350,
     marginVertical: 10,
     padding: 10,
     borderRadius: 20,

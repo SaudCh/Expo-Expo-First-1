@@ -14,32 +14,32 @@ import { FontAwesome5, FontAwesome, AntDesign } from "@expo/vector-icons";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const BottomTabHomeButton = ({ children, onPress }) => (
-  <TouchableOpacity
-    onPress={onPress}
-    style={{
-      justifyContent: "center",
-      alignItems: "center",
-      top: -30,
-    }}
-  >
-    <View
-      style={{
-        width: 70,
-        height: 70,
-        borderRadius: 35,
-        backgroundColor: "#e32f45",
-      }}
-    >
-      {children}
-    </View>
-  </TouchableOpacity>
-);
+// const BottomTabHomeButton = ({ children, onPress }) => (
+//   <TouchableOpacity
+//     onPress={onPress}
+//     style={{
+//       justifyContent: "center",
+//       alignItems: "center",
+//       top: -30,
+//     }}
+//   >
+//     <View
+//       style={{
+//         width: 70,
+//         height: 70,
+//         borderRadius: 35,
+//         backgroundColor: "#e32f45",
+//       }}
+//     >
+//       {children}
+//     </View>
+//   </TouchableOpacity>
+// );
 
 function MainBottomTabs() {
   return (
     <Tab.Navigator
-      initialRouteName={"Home"}
+      //initialRouteName={"Home"}
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {

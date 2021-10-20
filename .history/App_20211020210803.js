@@ -39,7 +39,7 @@ const BottomTabHomeButton = ({ children, onPress }) => (
 function MainBottomTabs() {
   return (
     <Tab.Navigator
-      initialRouteName={"Home"}
+      //initialRouteName={"Home"}
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {

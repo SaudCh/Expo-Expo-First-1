@@ -99,9 +99,4 @@ const styles = StyleSheet.create({
   FCbutton: {
     margin: 5,
   },
-  activityContainer: {
-    height: 400,
-    alignContent: "center",
-    justifyContent: "center",
-  },
 });
