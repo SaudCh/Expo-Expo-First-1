@@ -21,9 +21,9 @@
       "bundleIdentifier": "com.saudch00.first1us"
     },
     "android": {
-      "config":{
-        "googleMaps":{
-          "apiKey":"AIzaSyBQwpzlVeV9AI6FETYYUmLt730XEKRdfAY"
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBQwpzlVeV9AI6FETYYUmLt730XEKRdfAY"
         }
       },
       "adaptiveIcon": {
