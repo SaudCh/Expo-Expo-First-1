@@ -1,0 +1,159 @@
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  FlatList,
+  Text,
+  Image,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import { Button } from "native-base";
+import { alignItems, fontSize } from "styled-system";
+
+export default function SelectedCityCard(props) {
+  const { selectedCity } = props;
+  const [amount, setAmount] = useState(500);
+  const [read, setRead] = useState("more");
+  var myArr = selectedCity.communities;
+  myArr = myArr.split(",");
+  myArr.forEach(myFunction);
+
+  function myFunction(item, index) {
+    item = item.split(":");
+    myArr[index] = {
+      indx: item[0],
+      value: item[1],
+    };
+    //console.log(myArr[index]);
+  }
+  //console.log(myArr[0]);
+
+  useEffect(() => {
+    return () => {
+      setAmount(500);
+      setRead("more");
+      //console.log(selectedCity.communities);
+      //console.log(myArr);
+      //.split("+");
+    };
+  }, [selectedCity]);
+
+  const content = (text1 = "") => {
+    //text1 = "hello";
+    text1 = text1.substring(0, amount);
+    text1 = text1.replace("<p>", "");
+    return text1;
+  };
+  const readMore = () => {
+    //console.log("hello");
+    if (amount == 500) {
+      setAmount(10000);
+      setRead("less");
+    } else {
+      setAmount(500);
+      setRead("more");
+    }
+  };
+  const MyButton = (props) => {
+    return props.value ? (
+      <Button
+        size="xs"
+        style={{
+          margin: 5,
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
+        }}
+      >
+        {props.value}
+      </Button>
+    ) : (
+      <View></View>
+    );
+  };
+  return (
+    <View style={styles.cityContainer}>
+      <Image
+        style={styles.cityImage}
+        source={{
+          uri: `https://first1.us/admin/templates/cities/${selectedCity.header_img}`,
+        }}
+      />
+
+      <Text style={{ ...styles.LowerText }}>
+        {content(selectedCity.content)}
+        <Text
+          style={{
+            fontWeight: "bold",
+            borderBottomColor: "#4fcdc5",
+            borderBottomWidth: 1,
+            marginLeft: 10,
+            marginTop: 2,
+          }}
+          onPress={() => readMore()}
+        >
+          <Text style={{ color: "#4fcdc5" }}> Read {read}</Text>
+        </Text>
+      </Text>
+      <Text style={styles.cityName}>{selectedCity.name} Communities</Text>
+      <View
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "row",
+        }}
+      >
+        <FlatList
+          numColumns="2"
+          data={myArr}
+          keyExtractor={({ indx }, index) => indx}
+          renderItem={({ item }) => <MyButton value={item.value} />}
+        />
+      </View>
+
+      <TouchableOpacity>
+        <Text style={{ color: "#FF5F11", fontSize: 18, marginVertical: 10 }}>
+          See All Communities in {selectedCity.name}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  cityContainer: {
+    padding: 10,
+    paddingLeft: 20,
+    borderColor: "white",
+    borderRadius: 20,
+    margin: 10,
+    backgroundColor: "white",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 24,
+    width: 350,
+  },
+  cityImage: {
+    width: "100%",
+    height: 200,
+    resizeMode: "center",
+  },
+  LowerText: {
+    fontSize: 16,
+    color: "#546cb1",
+    marginHorizontal: 20,
+  },
+  cityName: {
+    textAlign: "center",
+    fontWeight: "bold",
+    marginVertical: 10,
+    fontSize: 20,
+    borderBottomColor: "#09AFFF",
+    borderBottomWidth: 5,
+    marginHorizontal: 50,
+  },
+});
